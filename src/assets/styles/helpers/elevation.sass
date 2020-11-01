@@ -1,0 +1,12 @@
+@import 'variables'
+
+.elev-z
+    box-shadow: $elevation-z
+
+.elev-z-active
+    box-shadow: $elevation-z-active
+
+.elev-z-active-on-hover
+    @extend .elev-z
+    &:hover
+        box-shadow: $elevation-z-active

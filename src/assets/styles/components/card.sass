@@ -1,0 +1,13 @@
+@import 'mixins'
+@import 'variables'
+
+app-card
+    .card
+        @extend .elev-z
+        @extend .mb-4
+        @extend .p-3
+        @extend .p-md-4
+        background-color: $color-white
+        @include element(header)
+            @extend .mb-3
+            font-weight: $font-weight-header

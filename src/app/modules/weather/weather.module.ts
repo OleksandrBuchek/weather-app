@@ -3,6 +3,7 @@ import { WeatherListContainerComponent } from './containers/weather-list/weather
 import { WeatherItemContainerComponent } from './containers/weather-item/weather-item-container.component';
 import { SharedModule } from '../../shared/shared.module';
 import { WeatherListComponent } from './components/weather-list/weather-list.component';
+import { CardModule } from '../ui-elements/card/card.module';
 
 
 
@@ -13,7 +14,8 @@ import { WeatherListComponent } from './components/weather-list/weather-list.com
         WeatherListComponent
     ],
     imports: [
-        SharedModule
+        SharedModule,
+        CardModule
     ],
     exports: [
         WeatherListContainerComponent

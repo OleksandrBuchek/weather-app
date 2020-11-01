@@ -8,7 +8,7 @@ import { ICurrentWeather } from '../../models';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherListComponent implements OnInit {
-    @Input() weatherList: ICurrentWeather[];
+    @Input() weatherList: ICurrentWeather[] = [];
 
     constructor() { }
 

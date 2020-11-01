@@ -1,15 +1,19 @@
 <div class="row">
     <div *ngFor="let weather of weatherList" class="col-xs-12 col-sm-6">
-        <div class="row">
-            <div class="col-12">
-                {{ weather.name }}
-            </div>
-            <div class="col-12">
-                Wind: {{ weather.wind.speed }}
-            </div>
-            <div class="col-12">
-                Temperature: {{ weather.main.temp }}
-            </div>
-        </div>
+        <wa-card>
+            <wa-card-content>
+                <div class="row">
+                    <div class="col-12">
+                        {{ weather.name }}
+                    </div>
+                    <div class="col-12">
+                        Wind: {{ weather.wind.speed }}
+                    </div>
+                    <div class="col-12">
+                        Temperature: {{ weather.main.temp }}
+                    </div>
+                </div>
+            </wa-card-content>
+        </wa-card>
     </div>
 </div>

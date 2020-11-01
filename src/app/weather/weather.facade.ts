@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { refCountShareReplay } from '../shared/rxjs-operators';
+import { immutable, refCountShareReplay } from '../shared/rxjs-operators';
 import { WeatherApi } from './api/weather.api';
 import { CityId, ICurrentWeather, IForecast } from './models';
 
@@ -17,23 +17,21 @@ export class WeatherFacade {
     ) {}
 
     public currentWeatherList(): Observable<ICurrentWeather[]> {
-        return this.currentWeatherList$.asObservable().pipe(refCountShareReplay);
+        return this.currentWeatherList$.asObservable().pipe(refCountShareReplay, immutable);
     }
 
     public selectedLocationForecastList(): Observable<IForecast[]> {
-        return this.selectedLocationForecastList$.asObservable().pipe(refCountShareReplay);
+        return this.selectedLocationForecastList$.asObservable().pipe(refCountShareReplay, immutable);
     }
 
     public getCurrentWeatherByCityIds(citiesIds: CityId[]): void {
         this.weatherApi.getCurrentWeatherForCitiesByIds(citiesIds).subscribe(result => {
-            console.log(result);
             this.currentWeatherList$.next(result.list);
         });
     }
 
     public getForecastByCityId(cityId: CityId): void {
         this.weatherApi.getForecastForCityById(cityId).subscribe(result => {
-            console.log(result);
             this.selectedLocationForecastList$.next(result.list);
         });
     }

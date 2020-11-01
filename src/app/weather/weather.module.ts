@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WeatherContainerComponent } from './containers/weather.container';
+import { WeatherListContainerComponent } from './containers/weather-list.container';
 
 
 
 @NgModule({
     declarations: [
-        WeatherContainerComponent
+        WeatherListContainerComponent
     ],
     imports: [
         CommonModule
     ],
     exports: [
-        WeatherContainerComponent
+        WeatherListContainerComponent
     ]
 })
 export class WeatherModule { }

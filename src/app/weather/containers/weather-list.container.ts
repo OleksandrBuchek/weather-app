@@ -3,11 +3,11 @@ import { CityId } from '../models';
 import { WeatherFacade } from '../weather.facade';
 
 @Component({
-    selector: 'app-weather-container',
-    templateUrl: './weather.container.html',
-    styleUrls: ['./weather.container.sass']
+    selector: 'app-weather-list-container',
+    templateUrl: './weather-list.container.html',
+    styleUrls: ['./weather-list.container.sass']
 })
-export class WeatherContainerComponent implements OnInit {
+export class WeatherListContainerComponent implements OnInit {
 
     public currentWeatherList$ = this.weatherFacade.currentWeatherList();
     public selectedLocationForecastList$ = this.weatherFacade.selectedLocationForecastList();

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WeatherListContainerComponent } from './weather-list.container';
+import { WeatherListContainerComponent } from './weather-list-container.component';
 
 describe('WeatherContainerComponent', () => {
     let component: WeatherListContainerComponent;

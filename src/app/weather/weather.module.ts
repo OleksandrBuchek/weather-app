@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { WeatherListContainerComponent } from './containers/weather-list.container';
+import { WeatherListContainerComponent } from './containers/weather-list/weather-list-container.component';
+import { WeatherItemContainerComponent } from './containers/weather-item/weather-item-container.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
     declarations: [
-        WeatherListContainerComponent
+        WeatherListContainerComponent,
+        WeatherItemContainerComponent
     ],
     imports: [
-        CommonModule
+        SharedModule
     ],
     exports: [
         WeatherListContainerComponent

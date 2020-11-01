@@ -3,11 +3,11 @@ export interface IGetWeatherDataOptions {
 }
 
 export enum CityId {
-    London = '2643743',
-    Paris = '2988506',
-    Amsterdam = '2759794',
-    Kyiv = '703448',
-    Rome = '3169070'
+    London = 2643743,
+    Paris = 2988506,
+    Amsterdam = 2759794,
+    Kyiv = 703448,
+    Rome = 3169070
 }
 
 export interface IWeatherBase {
@@ -24,7 +24,7 @@ export interface IWeatherBase {
 }
 
 export interface ICurrentWeather extends IWeatherBase {
-    id: number;
+    id: CityId;
     country: string;
     name: string;
 }

@@ -28,7 +28,7 @@ export class WeatherApi {
 
     public getForecastForCityById(cityId: CityId, qty: string | number = this.DEFAULT_FORECAST_QTY): Observable<IGetForecastResult> {
         const params = new HttpParams()
-            .set('id', cityId)
+            .set('id', `${cityId}`)
             .set('cnt', `${qty}`)
             .set('units', this.UNIT_OF_MEASUREMENT)
             .set('appId', WEATHER_API.API_KEY);

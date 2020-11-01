@@ -13,7 +13,7 @@ export class WeatherFacade {
     private selectedLocationForecastList$ = new BehaviorSubject<IForecast[]>([]);
 
     constructor(
-        private weatherApi: WeatherApi,
+        private weatherApi: WeatherApi
     ) {}
 
     public currentWeatherList(): Observable<ICurrentWeather[]> {

@@ -3,7 +3,7 @@ import { CityId } from '../../models';
 import { WeatherFacade } from '../../weather.facade';
 
 @Component({
-    selector: 'app-weather-list-container',
+    selector: 'wa-weather-list-container',
     templateUrl: './weather-list-container.component.html',
     styleUrls: ['./weather-list-container.component.sass']
 })

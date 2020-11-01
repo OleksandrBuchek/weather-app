@@ -1,7 +1,5 @@
-<main>
-    <div class="row">
-        <div *ngFor="let weather of (currentWeatherList$ | async)" class="col-6">
-            {{ weather.name }}
-        </div>
-    </div>
+<main class="container-fluid">
+    <section>
+        <wa-weather-list [weatherList]="currentWeatherList$ | async"></wa-weather-list>
+    </section>
 </main>

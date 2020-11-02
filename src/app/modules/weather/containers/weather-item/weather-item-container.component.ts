@@ -35,7 +35,7 @@ export class WeatherItemContainerComponent implements OnInit {
     private getCurrentWeatherItem(): void {
         this.currentWeatherItem$ = this.route.data.pipe(
             map(({ currentWeatherItem }) => currentWeatherItem),
-            tap(item => item ? null : this.router.navigate([WeatherRoutePath.WeatherList]))
+            tap((item: ICurrentWeather) => item ? null : this.router.navigate([WeatherRoutePath.WeatherList]))
         );
     }
 }

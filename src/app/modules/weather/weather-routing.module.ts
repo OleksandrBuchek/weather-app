@@ -4,7 +4,7 @@ import { WeatherItemContainerComponent } from './containers/weather-item/weather
 import { WeatherListContainerComponent } from './containers/weather-list/weather-list-container.component';
 import { WeatherRoutePath } from './models';
 
-const routes: Routes = [
+export const WEATHER_ROUTES: Routes = [
     {
         path: WeatherRoutePath.WeatherList,
         component: WeatherListContainerComponent
@@ -16,7 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
+    imports: [RouterModule.forChild(WEATHER_ROUTES)],
     exports: [RouterModule]
 })
 export class WeatherRoutingModule { }

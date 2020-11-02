@@ -1,7 +1,9 @@
 # WeatherApp
 
 ## Install
+```
 $ npm install
+```
 
 ## Configure
 Go to `src/environments/environment.ts` and replace the `API_KEY` property with your own api key needed to access the open weather api.

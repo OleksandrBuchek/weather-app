@@ -14,9 +14,3 @@ export const WEATHER_ROUTES: Routes = [
         component: WeatherItemContainerComponent
     }
 ];
-
-@NgModule({
-    imports: [RouterModule.forChild(WEATHER_ROUTES)],
-    exports: [RouterModule]
-})
-export class WeatherRoutingModule { }

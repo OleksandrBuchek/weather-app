@@ -4,7 +4,7 @@
             class="c-pointer" 
             [elevationOnHover]="true" 
             (click)="selectCurrentWeatherItem(weather.id)">
-            <wa-card-header>{{ weather.name }}</wa-card-header>
+            <wa-card-header>{{ weather.name | uppercase }}</wa-card-header>
             <wa-card-content>
                 <div class="row">
                     <div class="col-12">

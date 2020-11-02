@@ -1,0 +1,24 @@
+<div class="row">
+    <div *ngFor="let forecast of forecastList" class="col-xs-12 col-sm-6 col-md-4">
+        <wa-card>
+            <wa-card-header>{{ forecast.dt_txt }}</wa-card-header>
+            <wa-card-content>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <div class="row">
+                            <div *ngFor="let weather of forecast.weather" class="col-12">
+                               {{ weather.description | uppercase }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        Wind: {{ forecast.wind.speed }}
+                    </div>
+                    <div class="col-12">
+                        Temperature: {{ forecast.main.temp }}
+                    </div>
+                </div>
+            </wa-card-content>
+        </wa-card>
+    </div>
+</div>

@@ -1,8 +1,12 @@
 
-<main class="container-fluid" *ngIf="(currentWeatherItem$ | async) as currentWeatherItem">
+<main class="container-fluid" *ngIf="{
+    currentWeatherItem: (currentWeatherItem$ | async),
+    forecastList: (forecastList$ | async)
+} as data">
     <section>
         <header>
-            <h3>Weather for {{ currentWeatherItem.name }}</h3>
+            <h3>Forecast for {{ data.currentWeatherItem.name }}</h3>
         </header>
+        <wa-forecast-list [forecastList]="data.forecastList"></wa-forecast-list>
     </section>
 </main>

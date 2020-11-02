@@ -26,7 +26,7 @@ export class WeatherFacade {
         return this.currentWeatherList$.asObservable().pipe(immutable, refCountShareReplay);
     }
 
-    public selectedLocationForecastList(): Observable<IForecast[]> {
+    public forecastList(): Observable<IForecast[]> {
         return this.forecastList$.asObservable().pipe(immutable, refCountShareReplay);
     }
 
@@ -53,7 +53,9 @@ export class WeatherFacade {
     }
 
     public getCurrentWeatherByCityIds(citiesIds: CityId[]): void {
-        this.weatherApi.getCurrentWeatherForCitiesByIds(citiesIds).subscribe(result => {
+        this.weatherApi.getCurrentWeatherForCitiesByIds(citiesIds).pipe(
+            catchError(() => this.handleError(`getting weather for ${citiesIds.join(',')} cities ids `))
+        ).subscribe(result => {
             this.currentWeatherList$.next(result.list);
         });
     }

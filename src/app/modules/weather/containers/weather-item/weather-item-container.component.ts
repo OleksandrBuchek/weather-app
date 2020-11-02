@@ -12,7 +12,7 @@ import { WeatherFacade } from '../../weather.facade';
 })
 export class WeatherItemContainerComponent implements OnInit {
 
-    public selectedLocationForecastList$ = this.weatherFacade.selectedLocationForecastList();
+    public forecastList$ = this.weatherFacade.forecastList();
     public currentWeatherItem$: Observable<ICurrentWeather>;
 
     constructor(

@@ -8,7 +8,7 @@
     </nav>
     <section>
         <header>
-            <h3>Forecast for {{ data.currentWeatherItem.name }}</h3>
+            <h3>Forecast for {{ data?.currentWeatherItem?.name }}</h3>
         </header>
         <wa-forecast-list [forecastList]="data.forecastList"></wa-forecast-list>
     </section>

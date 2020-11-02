@@ -6,14 +6,10 @@
             (click)="selectCurrentWeatherItem(weather.id)">
             <wa-card-header>{{ weather.name | uppercase }}</wa-card-header>
             <wa-card-content>
-                <div class="row">
-                    <div class="col-12">
-                        Wind: {{ weather.wind.speed }}
-                    </div>
-                    <div class="col-12">
-                        Temperature: {{ weather.main.temp }}
-                    </div>
-                </div>
+                <wa-list>
+                    <wa-list-item label="wind">{{ weather.wind.speed }}</wa-list-item>
+                    <wa-list-item label="temperature">{{ weather.main.temp }}</wa-list-item>
+                </wa-list>
             </wa-card-content>
         </wa-card>
     </div>

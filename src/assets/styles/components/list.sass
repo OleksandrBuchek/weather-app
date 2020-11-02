@@ -1,0 +1,13 @@
+@import 'mixins'
+@import 'variables'
+
+wa-list
+    display: block
+    overflow: hidden
+    wa-list-item
+        .list-item
+            @include element(label)
+                font-size: $font-size-label
+                strong
+                    text-overflow: ellipsis
+                    overflow: hidden

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CardModule } from '@ui-elements/card/card.module';
+import { ListModule } from '@ui-elements/list/list.module';
 import { SharedModule } from '@shared/shared.module';
 
 import { WeatherListContainerComponent } from './containers/weather-list/weather-list-container.component';
@@ -8,6 +9,7 @@ import { WeatherItemContainerComponent } from './containers/weather-item/weather
 import { WeatherListComponent } from './components/weather-list/weather-list.component';
 import { ForecastListComponent } from './components/forecast-list/forecast-list.component';
 import { RouterModule } from '@angular/router';
+
 
 
 @NgModule({
@@ -20,6 +22,7 @@ import { RouterModule } from '@angular/router';
     imports: [
         SharedModule,
         CardModule,
+        ListModule,
         RouterModule
     ]
 })

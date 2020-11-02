@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { CityId, ICurrentWeather } from '../../models';
+import { map, tap } from 'rxjs/operators';
+import { CityId, ICurrentWeather, WeatherRoutePath } from '../../models';
 import { WeatherFacade } from '../../weather.facade';
 
 @Component({
@@ -17,7 +17,8 @@ export class WeatherItemContainerComponent implements OnInit {
 
     constructor(
         private weatherFacade: WeatherFacade,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router
     ) { }
 
     ngOnInit(): void {
@@ -31,7 +32,8 @@ export class WeatherItemContainerComponent implements OnInit {
 
     private getCurrentWeatherItem(): void {
         this.currentWeatherItem$ = this.route.data.pipe(
-            map(({ currentWeatherItem }) => currentWeatherItem)
+            map(({ currentWeatherItem }) => currentWeatherItem),
+            tap(item => item ? null : this.router.navigate([WeatherRoutePath.WeatherList]))
         );
     }
 }

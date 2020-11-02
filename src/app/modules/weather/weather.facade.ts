@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { skip } from 'rxjs/operators';
+import { BehaviorSubject, EMPTY, Observable, Subject } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { ERROR_MESSAGE_BASE } from '../../shared/constants';
 import { immutable, refCountShareReplay } from '../../shared/rxjs-operators';
 import { WeatherApi } from './api/weather.api';
 import { CityId, ICurrentWeather, IForecast } from './models';
@@ -13,10 +14,13 @@ export class WeatherFacade {
     private currentWeatherList$ = new BehaviorSubject<ICurrentWeather[]>([]);
     private forecastList$ = new BehaviorSubject<IForecast[]>([]);
     private currentWeatherItem$ = new BehaviorSubject<ICurrentWeather | null>(null);
+    private dataLoadingError$ = new Subject<string>();
 
     constructor(
         private weatherApi: WeatherApi
     ) {}
+
+    // SELECTORS
 
     public currentWeatherList(): Observable<ICurrentWeather[]> {
         return this.currentWeatherList$.asObservable().pipe(immutable, refCountShareReplay);
@@ -26,20 +30,26 @@ export class WeatherFacade {
         return this.forecastList$.asObservable().pipe(immutable, refCountShareReplay);
     }
 
-    public currentWeatherItem(cityId: CityId): Observable<ICurrentWeather> {
-        if (cityId && this.currentWeatherItem$.getValue()?.id !== cityId) {
-            this.weatherApi.getCurrentWeatherByCityId(cityId).subscribe(result => {
-                this.currentWeatherItem$.next(result);
-            });
-
-            return this.currentWeatherItem$.pipe(skip(1), immutable, refCountShareReplay);
-        }
-
+    public currentWeatherItem(): Observable<ICurrentWeather> {
         return this.currentWeatherItem$.pipe(immutable, refCountShareReplay);
     }
 
+    public dataLoadingError(): Observable<string> {
+        return this.dataLoadingError$.asObservable().pipe(refCountShareReplay);
+    }
+
+    // COMMANDS
+
     public setCurrentWeatherItem(cityId: CityId): void {
         this.currentWeatherItem$.next(this.currentWeatherList$.getValue().find(({ id }) => id === cityId));
+    }
+
+    public getCurrentWeatherItem(cityId: CityId): void {
+        this.weatherApi.getCurrentWeatherByCityId(cityId).pipe(
+            catchError(() => this.handleError(`getting weather for ${cityId} city id`))
+        ).subscribe(result => {
+            this.currentWeatherItem$.next(result);
+        });
     }
 
     public getCurrentWeatherByCityIds(citiesIds: CityId[]): void {
@@ -49,8 +59,15 @@ export class WeatherFacade {
     }
 
     public getForecastByCityId(cityId: CityId): void {
-        this.weatherApi.getForecastForCityById(cityId).subscribe(result => {
+        this.weatherApi.getForecastForCityById(cityId).pipe(
+            catchError(() => this.handleError(`getting forecast for ${cityId} city id `))
+        ).subscribe(result => {
             this.forecastList$.next(result.list);
         });
+    }
+
+    private handleError(message: string): Observable<never> {
+        this.dataLoadingError$.next(`${ERROR_MESSAGE_BASE} ${message}`);
+        return EMPTY;
     }
 }

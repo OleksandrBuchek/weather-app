@@ -1,1 +1,8 @@
-<p>weather-item works!</p>
+
+<main class="container-fluid" *ngIf="(currentWeatherItem$ | async) as currentWeatherItem">
+    <section>
+        <header>
+            <h3>Weather for {{ currentWeatherItem.name }}</h3>
+        </header>
+    </section>
+</main>

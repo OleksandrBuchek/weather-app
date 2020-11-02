@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { CityId, ICurrentWeather } from '../../models';
 import { WeatherFacade } from '../../weather.facade';
 
@@ -14,7 +15,10 @@ export class WeatherItemContainerComponent implements OnInit {
     public selectedLocationForecastList$ = this.weatherFacade.selectedLocationForecastList();
     public currentWeatherItem$: Observable<ICurrentWeather>;
 
-    constructor(private weatherFacade: WeatherFacade) { }
+    constructor(
+        private weatherFacade: WeatherFacade,
+        private route: ActivatedRoute
+    ) { }
 
     ngOnInit(): void {
         this.getForecast();
@@ -26,6 +30,8 @@ export class WeatherItemContainerComponent implements OnInit {
     }
 
     private getCurrentWeatherItem(): void {
-        // this.currentWeatherItem$ = this.weatherFacade.currentWeatherItem(this.snapshot.paramMap.get('id') as unknown as CityId);
+        this.currentWeatherItem$ = this.route.data.pipe(
+            map(({ currentWeatherItem }) => currentWeatherItem)
+        );
     }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { skip } from 'rxjs/operators';
 import { immutable, refCountShareReplay } from '../../shared/rxjs-operators';
 import { WeatherApi } from './api/weather.api';
 import { CityId, ICurrentWeather, IForecast } from './models';
@@ -30,6 +31,8 @@ export class WeatherFacade {
             this.weatherApi.getCurrentWeatherByCityId(cityId).subscribe(result => {
                 this.currentWeatherItem$.next(result);
             });
+
+            return this.currentWeatherItem$.pipe(skip(1), immutable, refCountShareReplay);
         }
 
         return this.currentWeatherItem$.pipe(immutable, refCountShareReplay);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CityId } from '../../models';
+import { CityId, WeatherRoutePath } from '../../models';
 import { WeatherFacade } from '../../weather.facade';
 
 @Component({
@@ -27,7 +27,6 @@ export class WeatherListContainerComponent implements OnInit {
 
     public currentWeatherItemSelected(cityId: CityId): void {
         this.weatherFacade.setCurrentWeatherItem(cityId);
-        // this.router.navigate()
+        this.router.navigate([WeatherRoutePath.WeatherList, cityId]);
     }
-
 }

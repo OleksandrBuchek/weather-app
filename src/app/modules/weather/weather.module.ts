@@ -7,6 +7,7 @@ import { WeatherItemContainerComponent } from './containers/weather-item/weather
 
 import { WeatherListComponent } from './components/weather-list/weather-list.component';
 import { ForecastListComponent } from './components/forecast-list/forecast-list.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ForecastListComponent } from './components/forecast-list/forecast-list.
     imports: [
         SharedModule,
         CardModule,
+        RouterModule
     ]
 })
 export class WeatherModule { }

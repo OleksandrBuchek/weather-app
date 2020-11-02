@@ -15,6 +15,8 @@ export class WeatherItemContainerComponent implements OnInit {
     public forecastList$ = this.weatherFacade.forecastList();
     public currentWeatherItem$: Observable<ICurrentWeather>;
 
+    public WeatherRoutePath = WeatherRoutePath;
+
     constructor(
         private weatherFacade: WeatherFacade,
         private route: ActivatedRoute,

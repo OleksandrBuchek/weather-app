@@ -3,6 +3,9 @@
     currentWeatherItem: (currentWeatherItem$ | async),
     forecastList: (forecastList$ | async)
 } as data">
+    <nav class="mb-4 d-flex">
+        <a [routerLink]="[WeatherRoutePath.WeatherList]"><h4>Go Back</h4></a>
+    </nav>
     <section>
         <header>
             <h3>Forecast for {{ data.currentWeatherItem.name }}</h3>

@@ -3,7 +3,7 @@ import { CardHeaderComponent } from './components/card-header/card-header.compon
 import { CardContentComponent } from './components/card-content/card-content.component';
 import { CardFooterComponent } from './components/card-footer/card-footer.component';
 import { CardComponent } from './components/card/card.component';
-import { SharedModule } from '../../../shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 
 
 

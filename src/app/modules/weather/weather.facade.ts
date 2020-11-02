@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, EMPTY, Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ERROR_MESSAGE_BASE } from '../../shared/constants';
-import { immutable, refCountShareReplay } from '../../shared/rxjs-operators';
+import { ERROR_MESSAGE_BASE } from '@shared/constants';
+import { immutable, refCountShareReplay } from '@shared/rxjs-operators';
 import { WeatherApi } from './api/weather.api';
 import { CityId, ICurrentWeather, IForecast } from './models';
 

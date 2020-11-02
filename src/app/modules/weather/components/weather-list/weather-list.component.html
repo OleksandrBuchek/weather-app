@@ -1,6 +1,9 @@
 <div class="row">
     <div *ngFor="let weather of weatherList" class="col-xs-12 col-sm-6 col-md-4">
-        <wa-card [elevationOnHover]="true">
+        <wa-card
+            class="c-pointer" 
+            [elevationOnHover]="true" 
+            (click)="selectCurrentWeatherItem(weather.id)">
             <wa-card-header>{{ weather.name }}</wa-card-header>
             <wa-card-content>
                 <div class="row">

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +13,8 @@ import { WeatherModule } from './modules/weather/weather.module';
     imports: [
         CoreModule,
         AppRoutingModule,
-        WeatherModule
+        WeatherModule,
+        RouterModule
     ],
     providers: [],
     bootstrap: [

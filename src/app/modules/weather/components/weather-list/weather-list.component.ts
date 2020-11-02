@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { ICurrentWeather } from '../../models';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CityId, ICurrentWeather } from '../../models';
 
 @Component({
     selector: 'wa-weather-list',
@@ -9,9 +9,14 @@ import { ICurrentWeather } from '../../models';
 })
 export class WeatherListComponent implements OnInit {
     @Input() weatherList: ICurrentWeather[] = [];
+    @Output() currentWeatherItemSelected = new EventEmitter<CityId>();
 
     constructor() { }
 
     ngOnInit(): void { }
+
+    public selectCurrentWeatherItem(cityId: CityId): void {
+        this.currentWeatherItemSelected.emit(cityId);
+    }
 
 }

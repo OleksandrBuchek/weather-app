@@ -3,6 +3,9 @@
         <header>
             <h3>Current Weather List</h3>
         </header>
-        <wa-weather-list [weatherList]="currentWeatherList$ | async"></wa-weather-list>
+        <wa-weather-list 
+            [weatherList]="currentWeatherList$ | async"
+            (currentWeatherItemSelected)="currentWeatherItemSelected($event)">
+        </wa-weather-list>
     </section>
 </main>

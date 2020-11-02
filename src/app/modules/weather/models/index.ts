@@ -10,6 +10,10 @@ export enum UnitOfMeasurement {
     Metric = 'metric'
 }
 
+export enum WeatherRoutePath {
+    WeatherList = 'weather-list'
+}
+
 export interface IGetWeatherDataOptions {
     citiesIds: CityId[];
 }

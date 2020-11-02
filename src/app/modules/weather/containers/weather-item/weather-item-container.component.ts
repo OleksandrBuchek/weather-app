@@ -14,7 +14,7 @@ export class WeatherItemContainerComponent implements OnInit {
     public selectedLocationForecastList$ = this.weatherFacade.selectedLocationForecastList();
     public currentWeatherItem$: Observable<ICurrentWeather>;
 
-    constructor(private weatherFacade: WeatherFacade, private snapshot: ActivatedRouteSnapshot) { }
+    constructor(private weatherFacade: WeatherFacade) { }
 
     ngOnInit(): void {
         this.getForecast();
@@ -26,6 +26,6 @@ export class WeatherItemContainerComponent implements OnInit {
     }
 
     private getCurrentWeatherItem(): void {
-        this.currentWeatherItem$ = this.weatherFacade.currentWeatherItem(this.snapshot.paramMap.get('id') as unknown as CityId);
+        // this.currentWeatherItem$ = this.weatherFacade.currentWeatherItem(this.snapshot.paramMap.get('id') as unknown as CityId);
     }
 }

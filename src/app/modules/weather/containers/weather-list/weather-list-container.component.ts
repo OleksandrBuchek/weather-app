@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CityId } from '../../models';
 import { WeatherFacade } from '../../weather.facade';
 
@@ -12,7 +13,8 @@ export class WeatherListContainerComponent implements OnInit {
     public currentWeatherList$ = this.weatherFacade.currentWeatherList();
 
     constructor(
-        private weatherFacade: WeatherFacade
+        private weatherFacade: WeatherFacade,
+        private router: Router
     ) { }
 
     ngOnInit(): void {
@@ -21,6 +23,11 @@ export class WeatherListContainerComponent implements OnInit {
 
     private getCurrentWeatherList(): void {
         this.weatherFacade.getCurrentWeatherByCityIds([CityId.Kyiv, CityId.Amsterdam, CityId.London, CityId.Paris, CityId.Rome]);
+    }
+
+    public currentWeatherItemSelected(cityId: CityId): void {
+        this.weatherFacade.setCurrentWeatherItem(cityId);
+        // this.router.navigate()
     }
 
 }

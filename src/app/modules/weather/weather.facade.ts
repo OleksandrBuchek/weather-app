@@ -31,7 +31,7 @@ export class WeatherFacade {
     }
 
     public currentWeatherItem(): Observable<ICurrentWeather> {
-        return this.currentWeatherItem$.pipe(immutable, refCountShareReplay);
+        return this.currentWeatherItem$.asObservable().pipe(immutable, refCountShareReplay);
     }
 
     public dataLoadingError(): Observable<string> {

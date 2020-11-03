@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CardHeaderComponent } from './components/card-header/card-header.component';
 import { CardContentComponent } from './components/card-content/card-content.component';
-import { CardFooterComponent } from './components/card-footer/card-footer.component';
 import { CardComponent } from './components/card/card.component';
 import { SharedModule } from '@shared/shared.module';
 
@@ -11,7 +10,6 @@ import { SharedModule } from '@shared/shared.module';
     declarations: [
         CardHeaderComponent,
         CardContentComponent,
-        CardFooterComponent,
         CardComponent
     ],
     imports: [
@@ -20,7 +18,6 @@ import { SharedModule } from '@shared/shared.module';
     exports: [
         CardHeaderComponent,
         CardContentComponent,
-        CardFooterComponent,
         CardComponent
     ]
 })

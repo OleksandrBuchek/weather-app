@@ -12,7 +12,7 @@ export class CurrentWeatherItemResolver implements Resolve<ICurrentWeather> {
 
     constructor(private weatherFacade: WeatherFacade) { }
 
-    public resolve({ paramMap }: ActivatedRouteSnapshot): Observable<any> {
+    public resolve({ paramMap }: ActivatedRouteSnapshot): Observable<ICurrentWeather | null> {
         return this.weatherFacade.currentWeatherItem().pipe(
             switchMap(item => iif(() => !!item, of(item), this.getCurrentWeatherItemViaApi(paramMap.get('id') as unknown as CityId))),
             take(1)
